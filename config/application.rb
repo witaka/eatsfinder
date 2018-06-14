@@ -29,5 +29,14 @@ module Eatsfinder
 
     # Don't generate system test files.
     config.generators.system_tests = nil
+
+    config.middleware.insert_before 0, Rack::Cors do
+       allow do
+         origins 'localhost:3434'
+         resource '/api/v1/*', credentials: true, headers: :any, methods: [
+           :get, :post, :options, :delete, :patch, :put
+         ]
+       end
+     end
   end
 end
