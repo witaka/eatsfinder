@@ -1,4 +1,7 @@
 class Provider < ApplicationRecord
+
+  has_many :dishes, dependent: :destroy
+  
   validates(:name, presence: true, uniqueness: true)
   validates(
     :email,
