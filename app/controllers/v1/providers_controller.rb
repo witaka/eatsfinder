@@ -1,4 +1,4 @@
-class Api::V1::ProvidersController < ApplicationController
+class V1::ProvidersController < ApplicationController
   
   def new
     @provider = Provider.new
