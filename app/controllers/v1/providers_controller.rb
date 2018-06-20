@@ -1,12 +1,8 @@
 class V1::ProvidersController < ApplicationController
   before_action :find_rovider, only: [:show, :update, :destroy]
 
-  def new
-    @provider = Provider.new
-  end
-
   def create
-    provider = Provider.new(product_params)
+    provider = Provider.new(provider_params)
     if provider.save!
       render json: {id: provider.id}
     else
@@ -25,7 +21,7 @@ class V1::ProvidersController < ApplicationController
 
   def update
     if @provider.update(provider_params)
-      render json: {id: provider.id}
+      render json: {id: @provider.id}
     else
       render json: { errors: @provider.errors }
     end
