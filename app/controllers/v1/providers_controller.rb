@@ -1,28 +1,47 @@
 class V1::ProvidersController < ApplicationController
-  
+  before_action :find_rovider, only: [:show, :update, :destroy]
+
   def new
     @provider = Provider.new
   end
 
   def create
     provider = Provider.new(product_params)
-    provider.user = current_user
-    provider.save!
-    render json: {id: provider.id}
-  end
-
-  def show
-      provider = Provider.find params[:id]
-      render json: provider
+    if provider.save!
+      render json: {id: provider.id}
+    else
+      render json: { errors: provider.errors.full_messages }
+    end
   end
 
   def index
-      providers = Provider.order created_at: :desc
-      render json: providers
+    providers = Provider.order created_at: :desc
+    render json: providers
+  end
+
+  def show
+    render json: @provider
+  end
+
+  def update
+    if @provider.update(provider_params)
+      render json: {id: provider.id}
+    else
+      render json: { errors: @provider.errors }
+    end
+  end
+
+  def destroy
+    @provider.destroy
+    render json: { status: 200 }
   end
 
   private
-  def find_provider
+  def provider_params
+    params.require(:provider).permit(:name,:description,:email,:phone_number,:website,:address)
+  end
+
+  def find_rovider
     @provider = Provider.find params[:id]
   end
 
