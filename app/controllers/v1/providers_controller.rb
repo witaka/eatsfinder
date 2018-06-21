@@ -1,5 +1,5 @@
 class V1::ProvidersController < ApplicationController
-  before_action :find_rovider, only: [:show, :update, :destroy]
+  before_action :find_provider, only: [:show, :update, :destroy]
 
   def create
     provider = Provider.new(provider_params)
@@ -37,7 +37,7 @@ class V1::ProvidersController < ApplicationController
     params.require(:provider).permit(:name,:description,:email,:phone_number,:website,:address)
   end
 
-  def find_rovider
+  def find_provider
     @provider = Provider.find params[:id]
   end
 
