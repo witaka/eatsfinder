@@ -7,16 +7,21 @@ class V1::DishesController < ApplicationController
     @dish.provider = @provider
 
     if @dish.save
-      render json: {id: dish.id}
+      render json: @dish 
     else
-      render json: { errors: dish.errors.full_messages }      
+      render json: { errors: @dish.errors.full_messages }      
     end
   end
-
+   
+  def show 
+    render json: @dish
+  end
+  
   def destroy
     # @dish = Dish.find(params[:id])
     @dish.destroy
     render json: {status: 200}
+  end
 
   private
   def dish_params

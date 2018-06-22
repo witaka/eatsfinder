@@ -8,7 +8,7 @@ class Dish < ApplicationRecord
       message: "Please provide a short description about your meal" 
     },
     length: {
-      minimum: 10, maximum: 100
+      minimum: 5, maximum: 100
     }
   )
   validates(
