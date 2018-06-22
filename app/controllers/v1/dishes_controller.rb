@@ -12,6 +12,15 @@ class V1::DishesController < ApplicationController
       render json: { errors: @dish.errors.full_messages }      
     end
   end
+
+
+  def update
+    if @dish.update(dish_params)
+      render json: @dish
+    else
+      render json: { errors: @dish.errors }
+    end
+  end
    
   def show 
     render json: @dish
