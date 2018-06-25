@@ -23,6 +23,7 @@ group :development, :test do
   gem 'faker'
   gem 'rspec-rails'
   gem 'rails-controller-testing'
+  gem `bcrypt`
 end
 
 group :development do
