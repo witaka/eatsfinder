@@ -1,9 +1,27 @@
 DISH_TYPES = ["Breakfast ","Lunch","Brunch","Dinner","Dessert","Snack","Drink"]
+PASSWORD = "food"
 
+User.destroy_all
 Provider.destroy_all
+
+5.times.each do
+  first_name = Faker::Name.first_name
+  last_name = Faker::Name.last_name
+
+  User.create(
+    user_name: first_name,
+    full_name: first_name+last_name,
+    email: "#{first_name.downcase}.#{last_name.downcase}@eatsfinder.com",
+    password: PASSWORD
+  )
+end
+
+users = User.all
+puts "Created #{users.count} users"
 
 20.times.each do 
   provider_name = Faker::Name.name
+  user = users.sample
 
   p = Provider.create(
     name: provider_name,
@@ -11,7 +29,8 @@ Provider.destroy_all
     website:"http://#{provider_name.parameterize}.com",
     description: Faker::Friends.character,
     phone_number: Faker::PhoneNumber.cell_phone,
-    address: Faker::Address.full_address 
+    address: Faker::Address.full_address,
+    user: user
   )
   if p.valid?
     rand(0..10).times.each do
@@ -20,7 +39,8 @@ Provider.destroy_all
         name: Faker::Food.dish,
         dish_type: DISH_TYPES.sample,
         description: Faker::Food.spice,
-        price: rand(4...35)
+        price: rand(4...35),
+        user: user
       )
     end
   end
