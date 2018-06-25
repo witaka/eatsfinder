@@ -5,5 +5,6 @@ Rails.application.routes.draw do
       resources :providers, only: [:index, :create, :update, :show, :destroy] do
         resources :dishes, only: [:create, :update, :show, :destroy] 
       end
+      resources :dishes, only: [:index]
     end
 end

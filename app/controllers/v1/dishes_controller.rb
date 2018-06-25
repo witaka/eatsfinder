@@ -13,7 +13,6 @@ class V1::DishesController < ApplicationController
     end
   end
 
-
   def update
     if @dish.update(dish_params)
       render json: @dish
@@ -25,9 +24,13 @@ class V1::DishesController < ApplicationController
   def show 
     render json: @dish
   end
+
+  def index
+    dishes = Dish.order created_at: :desc
+    render json: dishes
+  end
   
   def destroy
-    # @dish = Dish.find(params[:id])
     @dish.destroy
     render json: {status: 200}
   end
