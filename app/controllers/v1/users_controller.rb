@@ -1,5 +1,10 @@
 class V1::UsersController < ApplicationController
-before_action :find_user, only: [:show, :update, :destroy]
+before_action :find_user, only: [:show, :update, :destroy, :current]
+before_action :authenticate_user!
+
+def current
+  render json: current_user
+end
 
 def create
   new_parms = user_params

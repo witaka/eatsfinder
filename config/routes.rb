@@ -6,6 +6,9 @@ Rails.application.routes.draw do
         resources :dishes, only: [:create, :update, :show, :destroy] 
       end
       resources :dishes, only: [:index]
-      resources :users, only: [:create, :update, :show, :destroy]
+      resources :users, only: [:create, :update, :show, :destroy] do
+        get :current, on: :collection
+      end
     end
 end
+
