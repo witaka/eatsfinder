@@ -1,6 +1,6 @@
 class Provider < ApplicationRecord
-
   has_many :dishes, dependent: :destroy
+  belongs_to :user
   
   validates(:name, presence: true, uniqueness: true)
   validates(

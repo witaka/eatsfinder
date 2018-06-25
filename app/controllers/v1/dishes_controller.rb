@@ -1,5 +1,5 @@
 class V1::DishesController < ApplicationController
-  before_action :find_dish, only: [:show, :edit, :update, :destroy]
+  before_action :find_dish, only: [:show, :update, :destroy]
 
   def create
     @provider = Provider.find(params[:provider_id])

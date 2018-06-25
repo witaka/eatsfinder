@@ -13,6 +13,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'active_model_serializers'
 gem 'rack-cors'
+gem 'bcrypt', '~> 3.1.7'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
@@ -23,7 +24,6 @@ group :development, :test do
   gem 'faker'
   gem 'rspec-rails'
   gem 'rails-controller-testing'
-  gem `bcrypt`
 end
 
 group :development do
