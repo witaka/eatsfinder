@@ -1,4 +1,5 @@
-class SessionsController < ApplicationController
+class V1::SessionsController < ApplicationController
+
   def create
     user = User.find_by email: params[:email]
     if user&.authenticate params[:password]
@@ -14,3 +15,5 @@ class SessionsController < ApplicationController
     render json: { status:200 }
   end
 end
+
+

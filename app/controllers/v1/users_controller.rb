@@ -1,6 +1,6 @@
 class V1::UsersController < ApplicationController
-before_action :find_user, only: [:show, :update, :destroy, :current]
-before_action :authenticate_user!
+before_action :find_user, only: [:show, :update, :destroy]
+before_action :authenticate_user!, except: [:create, :current]
 
 def current
   render json: current_user
@@ -12,10 +12,11 @@ def create
   new_parms[:password_confirmation] = params[:password_confirmation]
   @user = User.create new_parms
   if @user.save
+    session[:user_id] = @user.id
     render json: @user
   else
     render json: { errors: @user.errors.full_messages }
-end
+  end
 end
 
 def show

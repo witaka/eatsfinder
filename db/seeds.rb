@@ -4,6 +4,13 @@ PASSWORD = "food"
 User.destroy_all
 Provider.destroy_all
 
+User.create(
+  user_name: "root",
+  full_name: "root",
+  email: "root@i.com",
+  password: PASSWORD
+)
+
 5.times.each do
   first_name = Faker::Name.first_name
   last_name = Faker::Name.last_name

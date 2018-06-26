@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
     namespace :v1, defaults: { format: :json }, shallow: true do
-      # v1/providers
+      resource :session, only: [ :create, :destroy ]
       resources :providers, only: [:index, :create, :update, :show, :destroy] do
         resources :dishes, only: [:create, :update, :show, :destroy] 
       end
@@ -9,6 +9,7 @@ Rails.application.routes.draw do
       resources :users, only: [:create, :update, :show, :destroy] do
         get :current, on: :collection
       end
+     
     end
 end
 

@@ -1,10 +1,12 @@
 class V1::DishesController < ApplicationController
   before_action :find_dish, only: [:show, :update, :destroy]
+  before_action :authenticate_user!,except: [:show, :index]
 
   def create
     @provider = Provider.find(params[:provider_id])
     @dish = Dish.new(dish_params)
     @dish.provider = @provider
+    @dish.user = current_user
 
     if @dish.save
       render json: @dish 
