@@ -168,6 +168,6 @@ $RECYCLE.BIN/
 
 # Windows shortcuts
 *.lnk
-
-
+/config/credentials.yml.enc
+/config/master.key
 # End of https://www.gitignore.io/api/node,linux,rails,macos,windows

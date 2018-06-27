@@ -15,6 +15,8 @@ gem 'active_model_serializers'
 gem 'rack-cors'
 gem 'bcrypt', '~> 3.1.7'
 gem 'ransack'
+gem 'image_processing', '~> 1.2'
+gem "aws-sdk-s3", require: false
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
