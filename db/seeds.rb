@@ -1,4 +1,4 @@
-DISH_TYPES = ["Breakfast ","Lunch","Brunch","Dinner","Dessert","Snack","Drink"]
+DISH_TYPES = ["breakfast ","lunch","brunch","dinner","dessert","snack","drink"]
 PASSWORD = "food"
 
 User.destroy_all

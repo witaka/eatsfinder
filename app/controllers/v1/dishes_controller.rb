@@ -28,7 +28,10 @@ class V1::DishesController < ApplicationController
   end
 
   def index
-    dishes = Dish.order created_at: :desc
+    # filter = params[:filter_by]
+    # dishes = Dish.order filter
+    @q = Dish.ransack(params[:q])
+    dishes = @q.result(distinct: true)
     render json: dishes
   end
   
