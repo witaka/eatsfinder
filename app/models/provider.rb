@@ -2,6 +2,9 @@ class Provider < ApplicationRecord
   has_many :dishes, dependent: :destroy
   belongs_to :user
   has_one_attached :image
+
+  geocoded_by :address
+  after_validation :geocode, :if => :address_changed?
   
   # validates(:name, presence: true, uniqueness: true)
   # validates(

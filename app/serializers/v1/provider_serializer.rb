@@ -1,7 +1,7 @@
 class V1::ProviderSerializer < ActiveModel::Serializer
   has_many :dishes
-  attributes :id, :name, :description, :email, :phone_number, :website, :address, :image_url
-
+  attributes :id, :name, :description, :email, :phone_number, :website, :address, :image_url,   :latitude, 
+  :longitude
 
   class DishSerializer < ActiveModel::Serializer
     attributes :id, :name, :dish_type, :description, :price
