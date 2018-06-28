@@ -36,7 +36,7 @@ class V1::ProvidersController < ApplicationController
 
   private
   def provider_params
-    params.require(:provider).permit(:name, :description, :email, :phone_number, :website, :address)
+    params.permit(:name, :description, :email, :phone_number, :website, :address, :image)
   end
 
   def find_provider
