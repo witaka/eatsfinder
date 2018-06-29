@@ -1,6 +1,7 @@
 class Dish < ApplicationRecord
   belongs_to :provider
   belongs_to :user
+  has_one_attached :image
    
   validates(:name, presence: true, uniqueness: true)
   validates(
