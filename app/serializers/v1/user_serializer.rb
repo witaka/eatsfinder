@@ -1,4 +1,5 @@
 class V1::UserSerializer < ActiveModel::Serializer
-  attributes :id, :user_name, :full_name, :email
+  attributes :id, :user_name, :full_name, :email, :latitude, 
+  :longitude
  end
  

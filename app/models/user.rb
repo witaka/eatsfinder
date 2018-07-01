@@ -2,6 +2,9 @@ class User < ApplicationRecord
   has_secure_password()
   has_many :providers, dependent: :destroy
   has_many :dishes, dependent: :destroy
+
+  geocoded_by :address
+  after_validation :geocode, :if => :address_changed?
   
   validates :user_name, :full_name, presence: true, uniqueness: {case_sensitive: false}
   

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_06_28_012900) do
+ActiveRecord::Schema.define(version: 2018_06_29_220802) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -64,6 +64,14 @@ ActiveRecord::Schema.define(version: 2018_06_28_012900) do
     t.index ["user_id"], name: "index_providers_on_user_id"
   end
 
+  create_table "reviews", force: :cascade do |t|
+    t.text "body"
+    t.bigint "dish_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["dish_id"], name: "index_reviews_on_dish_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "user_name"
     t.string "full_name"
@@ -73,6 +81,9 @@ ActiveRecord::Schema.define(version: 2018_06_28_012900) do
     t.boolean "admin", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "address"
+    t.float "longitude"
+    t.float "latitude"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["user_name"], name: "index_users_on_user_name", unique: true
   end
@@ -80,4 +91,5 @@ ActiveRecord::Schema.define(version: 2018_06_28_012900) do
   add_foreign_key "dishes", "providers"
   add_foreign_key "dishes", "users"
   add_foreign_key "providers", "users"
+  add_foreign_key "reviews", "dishes"
 end

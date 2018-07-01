@@ -14,5 +14,12 @@ class V1::DishSerializer < ActiveModel::Serializer
        object.image_blob.service_url
     end
   end
+  
+  has_many :reviews
+
+  class ReviewSerializer < ActiveModel::Serializer
+    attributes :id, :body
+  end
+
 
 end
