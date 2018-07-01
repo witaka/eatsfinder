@@ -18,8 +18,12 @@ class V1::DishSerializer < ActiveModel::Serializer
   has_many :reviews
 
   class ReviewSerializer < ActiveModel::Serializer
-    attributes :id, :body
-  end
+    attributes :id, :body, :rating, :user_name
 
+    def user_name
+      object.user.user_name
+    end
+
+  end
 
 end

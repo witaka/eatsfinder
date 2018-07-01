@@ -5,7 +5,7 @@ class V1::ReviewsController < ApplicationController
     @dish = Dish.find(params[:dish_id])
     @review = Review.new(review_params)
     @review.dish = @dish
-    # @review.user = current_user
+    @review.user = current_user
 
     if @review.save
       render json: @review 
@@ -27,6 +27,6 @@ class V1::ReviewsController < ApplicationController
 
   private
   def review_params
-    params.require(:review).permit(:body)
+    params.require(:review).permit(:body, :rating)
   end
 end

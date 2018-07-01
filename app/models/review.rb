@@ -1,5 +1,6 @@
 class Review < ApplicationRecord
   belongs_to :dish
+  belongs_to :user
 
     validates(
     :body,
@@ -10,5 +11,6 @@ class Review < ApplicationRecord
       minimum: 5, maximum: 100
     }
   )
+
 end
 
