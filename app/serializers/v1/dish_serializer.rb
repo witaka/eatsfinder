@@ -1,5 +1,5 @@
 class V1::DishSerializer < ActiveModel::Serializer
- attributes :id, :name, :dish_type, :description, :price, :latitude, :longitude, :image_url
+ attributes :id, :name, :dish_type, :description, :price, :latitude, :longitude, :image_url, :likes_number
 
   def latitude
     object.provider.latitude
@@ -14,7 +14,11 @@ class V1::DishSerializer < ActiveModel::Serializer
        object.image_blob.service_url
     end
   end
-  
+
+  def likes_number
+       object.likers.count
+  end
+
   has_many :reviews
 
   class ReviewSerializer < ActiveModel::Serializer
@@ -23,7 +27,7 @@ class V1::DishSerializer < ActiveModel::Serializer
     def user_name
       object.user.user_name
     end
-
+ 
   end
 
 end

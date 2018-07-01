@@ -8,6 +8,7 @@ Rails.application.routes.draw do
       end
       resources :dishes, only: [:index] do
         resources :reviews, only: [:create, :index, :show, :destroy]
+        resources :likes, only: [:create, :destroy]
       end
       resources :users, only: [:create, :update, :show, :destroy] do
         get :current, on: :collection
