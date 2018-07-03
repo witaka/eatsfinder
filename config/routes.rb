@@ -9,6 +9,7 @@ Rails.application.routes.draw do
       resources :dishes, only: [:index] do
         resources :reviews, only: [:create, :index, :show, :destroy]
         resources :likes, only: [:create, :destroy]
+        resources :favorites, only: [:create, :destroy]
       end
       resources :users, only: [:create, :update, :show, :destroy] do
         get :current, on: :collection

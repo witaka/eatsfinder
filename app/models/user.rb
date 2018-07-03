@@ -4,8 +4,12 @@ class User < ApplicationRecord
   has_many :dishes, dependent: :destroy
   has_many :users, dependent: :destroy
   has_one_attached :image
+
   has_many :likes, dependent: :destroy
   has_many :liked_dishes, through: :likes, source: :dish  
+  
+  has_many :favorites, dependent: :destroy
+  has_many :favorite_dishes, through: :favorites, source: :dish  
 
   geocoded_by :address
   after_validation :geocode, :if => :address_changed?
