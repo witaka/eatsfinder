@@ -38,6 +38,12 @@ module Eatsfinder
            :get, :post, :options, :delete, :patch, :put
          ]
        end
+       allow do
+        origins 'localhost:3435'
+        resource '/v1/*', credentials: true, headers: :any, methods: [
+          :get, :post, :options, :delete, :patch, :put
+        ]
+      end
      end
   end
 end
