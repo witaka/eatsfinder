@@ -1,15 +1,17 @@
 class V1::DishSerializer < ActiveModel::Serializer
  attributes(
   :id,
-  :name, 
-  :dish_type, 
-  :description, 
-  :price, 
+  :name,
+  :dish_type,
+  :description,
+  :price,
   :latitude,
   :longitude,
   :image_url,
   :likes_number,
   :favoris_number,
+  :likers,
+  :favoris,
   :provider,
   :provider_image_url
   )
@@ -24,11 +26,11 @@ class V1::DishSerializer < ActiveModel::Serializer
    def provider
       object.provider
    end
- 
+
   def latitude
     object.provider.latitude
   end
-  
+
   def longitude
     object.provider.longitude
   end
@@ -43,8 +45,24 @@ class V1::DishSerializer < ActiveModel::Serializer
     object.likers.count
   end
 
+  def likers
+    str =''
+    object.likers.each do |like|
+      str += like.user_name + ' <br> '
+    end
+    str
+  end
+
   def favoris_number
     object.favoris.count
+  end
+
+  def favoris
+    str =''
+    object.favoris.each do |like|
+      str += like.user_name + ' <br> '
+    end
+    str
   end
 
   has_many :reviews
@@ -55,8 +73,7 @@ class V1::DishSerializer < ActiveModel::Serializer
     def user_name
       object.user.user_name
     end
- 
+
   end
 
 end
-
