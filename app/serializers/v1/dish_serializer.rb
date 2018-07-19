@@ -1,21 +1,20 @@
 class V1::DishSerializer < ActiveModel::Serializer
- attributes(
-  :id,
-  :name,
-  :dish_type,
-  :description,
-  :price,
-  :latitude,
-  :longitude,
-  :image_url,
-  :likes_number,
-  :favoris_number,
-  :likers,
-  :favoris,
-  :provider,
-  :provider_image_url
+  attributes(
+    :id,
+    :name,
+    :dish_type,
+    :description,
+    :price,
+    :latitude,
+    :longitude,
+    :image_url,
+    :likes_number,
+    :favoris_number,
+    :likers,
+    :favoris,
+    :provider,
+    :provider_image_url
   )
-
 
   def provider_image_url
     if(object.provider.image_blob)
@@ -23,9 +22,9 @@ class V1::DishSerializer < ActiveModel::Serializer
     end
   end
 
-   def provider
+  def provider
       object.provider
-   end
+  end
 
   def latitude
     object.provider.latitude
