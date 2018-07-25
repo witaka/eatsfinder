@@ -7,7 +7,7 @@ class CreateUsers < ActiveRecord::Migration[5.2]
       t.string :password_digest
       t.boolean :food_provider, default: false
       t.boolean :admin, default: false
-      
+
       t.timestamps
     end
   end
